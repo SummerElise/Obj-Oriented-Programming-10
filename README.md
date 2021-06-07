@@ -41,7 +41,9 @@ The following image shows a mock-up of the generated HTML’s appearance and fun
 
 You can find the repository to this asssignment here: https://github.com/SummerElise/Obj-Oriented-Programming-10/
 
+
 Link to the walkthrough video:
+https://drive.google.com/file/d/1OF1WiWbr0qJrvFV0lztm5KtHJPdlAOfY/view
 
 
 
