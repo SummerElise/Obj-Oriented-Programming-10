@@ -47,11 +47,18 @@ inquirer
         type: 'list',
         message: 'Do you want to add more team members?',
         choices: ['yes', 'no'],
-        name; 'addMembers'
+        name: 'addMembers'
     }])
 
 .then(function({roleInput, addMembers}) {
     let newMember;
     if (role === 'Manager') {
         newMember = new Manager(name, ID, email, roleInput);
+    } else if (role === 'Engineer') {
+        newMember = new Engineer(name, ID, email, roleInput);
+    } else {
+        newMember = new Intern(name, ID, email, roleInput);
+    }
+    employees.push(newMember);
+    addHTML
     
