@@ -1,7 +1,7 @@
 {
-  "name": "team-profile-generator",
+  "name": "obj-orient",
   "version": "1.0.0",
-  "description": "team-profile-generator",
+  "description": "",
   "main": "index.js",
   "directories": {
     "lib": "lib",
