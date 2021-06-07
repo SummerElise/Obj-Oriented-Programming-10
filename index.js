@@ -11,7 +11,13 @@ inquirer
     {
         type: 'input',
         name: 'name',
-        message: 'What is the Managers name?',
+        message: 'What is the Employee name?',
+    },
+    {
+        type: 'list',
+        message: 'Choose a role',
+        choices: ['Manager', 'Engineer', 'Intern'],
+        name: 'role',
     },
     {
         type: 'input',
@@ -21,11 +27,31 @@ inquirer
     {
         type: 'input',
         name: 'email',
-        message: 'What is the Managers email?',
+        message: 'What is the employee email?',
+    }])
+
+    .then(function({name, role, ID, email}) {
+    let roleInput = "";
+    if(role === "Manager") {
+        roleInput = "Office number";
+    } else if (role === "Engineer") {
+        roleInput = "Github";
+    } else (role === "Intern") {
+        roleInput = "School";
+    }
+    inquirer.prompt([{
+        message: `Enter employees ${roleInput}`,
+        name: 'roleInput'
     },
     {
-        type: 'input',
-        name: 'Office number',
-        message: 'What is the offices telephone number?',
-    },
-]);
+        type: 'list',
+        message: 'Do you want to add more team members?',
+        choices: ['yes', 'no'],
+        name; 'addMembers'
+    }])
+
+.then(function({roleInput, addMembers}) {
+    let newMember;
+    if (role === 'Manager') {
+        newMember = new Manager(name, ID, email, roleInput);
+    
