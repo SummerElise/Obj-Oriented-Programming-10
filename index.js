@@ -9,6 +9,7 @@ const Intern = require("./lib/Intern")
 function initApp() {
     topHTML();
     addMember();
+    
 }
 
 function addMember() {
@@ -42,9 +43,9 @@ inquirer
         roleInput = "Office number";
     } else if (role === "Engineer") {
         roleInput = "Github";
-    } else (role === "Intern") {
+    } else { 
         roleInput = "School";
-    }
+    };
     inquirer.prompt([{
         message: `Enter employees ${roleInput}`,
         name: 'roleInput'
@@ -78,7 +79,7 @@ inquirer
 });
 }
     function topHTML() {
-        const HTML = `< !DOCTYPE html >
+        const html = ` <!DOCTYPE html>
         <html lang="en">
         <head>
             <meta charset="UTF-8">
@@ -87,6 +88,33 @@ inquirer
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
             integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
             <title>Team Profile</title>
+            <style>
+                                            .row {
+                                                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                margin-top: 20px;
+                margin-bottom: 20px;
+            }
+            .card {
+                                                padding: 15px;
+                border-radius: 6px;
+                background-color: white;
+                color: white;
+                margin: 15px;
+            }
+            .text {
+                                                padding: 15px;
+                border-radius: 6px;
+                background-color: yellow;
+                color: black;
+                margin: 15px;
+            }
+            .col {
+                                                flex: 1;
+                text-align: center;
+            }
+        </style>
         </head>
         <body>
         <nav class="navbar navbar-dark bg-dark mb-5">
@@ -94,7 +122,11 @@ inquirer
     </nav>
     <div class="container">
         <div class="row">`;
-        fs.writeFile('./final.html', html)
+        fs.writeFile('./final.html', html, function(err) {
+            if (err) {
+                console.log(err);
+            }
+        });
         console.log('top');
     }
 
@@ -106,8 +138,78 @@ inquirer
             const email = member.getEmail();
             let data = "";
             if (role === 'Manager') {
-                const office = member.getOfficeNumber();
-                data = ``
+                const officeNumber = member.getOfficeNumber();
+                data = 
+                `<div class="card bg-dark justify-content-center align-items-center" style="width: 18rem;">
+                <div class="col card-header">
+                    <h4>${name}</h4>
+                </div>
+                <div class="col card-header">
+                    <h5>Manager</h5>
+                </div>
+                <ul class="list-group list-group-flush text">
+                <li class="list-group-item">ID: ${ID}</li>
+                <li class="list-group-item">Email: ${email}</li>
+                <li class="list-group-item">Office Number: ${officeNumber}</li>
+                </ul>
+                </div>
+                </div>`;
+            
+            } else if (role === 'Engineer') {
+                const gitHub = member.getGitHub();
+                data = `<div class="card bg-dark justify-content-center align-items-center" style="width: 18rem;">
+                <div class="col card-header">
+                    <h4>${name}</h4>
+                </div>
+                <div class="col card-header">
+                    <h5>Engineer</h5>
+                </div>
+                <ul class="list-group list-group-flush text">
+                <li class="list-group-item">ID: ${ID}</li>
+                <li class="list-group-item">Email: ${email}</li>
+                <li class="list-group-item">Github: ${gitHub}</li>
+                </ul>
+                </div>
+                </div>`;
+
+            } else {
+                const school = member.getSchool();
+                data = `<div class="card bg-dark justify-content-center align-items-center" style="width: 18rem;">
+                <div class="col card-header">
+                    <h4>${name}</h4>
+                </div>
+                <div class="col card-header">
+                    <h5>Intern</h5>
+                </div>
+                <ul class="list-group list-group-flush text">
+                <li class="list-group-item">ID: ${ID}</li>
+                <li class="list-group-item">Email: ${email}</li>
+                <li class="list-group-item">School: ${school}</li>
+                </ul>
+                </div>
+                </div>`;
             }
-        })
+            fs.appendFile('./final.html', data, function (err) {
+                if (err) {
+                    return rej(err);
+                };
+                return res();
+            });
+        });
     }
+
+    function bottomHTML() {
+        const html = `
+        </div>
+        </div>
+        </body>
+        </html>`;
+
+        fs.appendFile('./final.html', html, function (err) {
+            if (err) {
+                console.log(err);
+            };
+        });
+        console.log('bottom');
+    }
+    initApp();
