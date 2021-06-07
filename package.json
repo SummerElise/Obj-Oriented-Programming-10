@@ -8,7 +8,7 @@
     "test": "tests"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -21,6 +21,8 @@
   },
   "homepage": "https://github.com/SummerElise/Obj-Oriented-Programming-10#readme",
   "dependencies": {
-    "inquirer": "^8.1.0"
-  }
+    "inquirer": "^8.1.0",
+    "jest": "^27.0.4"
+  },
+  "devDependencies": {}
 }
