@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/SummerElise/Obj-Oriented-Programming-10/issues"
   },
-  "homepage": "https://github.com/SummerElise/Obj-Oriented-Programming-10#readme"
+  "homepage": "https://github.com/SummerElise/Obj-Oriented-Programming-10#readme",
+  "dependencies": {
+    "inquirer": "^8.1.0"
+  }
 }
