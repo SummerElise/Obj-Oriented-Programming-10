@@ -7,7 +7,9 @@ const Manager = require("./lib/Manager")
 const Intern = require("./lib/Intern")
 
 function init() {
-    addMember();    
+    topHTML();
+    addMember();
+        
 }
 
 function addMember() {
@@ -121,9 +123,12 @@ inquirer
     <div class="container">
         <div class="row">`;
 
-        fs.writeFile('./final.html', html, (err) => err ?
-                console.log(err) : console.log('top'))
-            }
+        fs.writeFile('./final.html', html, function (err) {
+                if (err) {
+                console.log(err);       
+            };
+        });
+    }
             
     function addHTML(member) {
         return new Promise(function(res, rej) {
