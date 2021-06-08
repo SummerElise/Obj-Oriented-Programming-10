@@ -6,10 +6,8 @@ const Engineer = require("./lib/Engineer")
 const Manager = require("./lib/Manager")
 const Intern = require("./lib/Intern")
 
-function initApp() {
-    topHTML();
-    addMember();
-    
+function init() {
+    addMember();    
 }
 
 function addMember() {
@@ -79,7 +77,7 @@ inquirer
 });
 }
     function topHTML() {
-        const html = ` <!DOCTYPE html>
+        let html = ` <!DOCTYPE html>
         <html lang="en">
         <head>
             <meta charset="UTF-8">
@@ -89,29 +87,29 @@ inquirer
             integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
             <title>Team Profile</title>
             <style>
-                                            .row {
-                                                display: flex;
+            .row {
+                display: flex;
                 flex-wrap: wrap;
                 justify-content: center;
                 margin-top: 20px;
                 margin-bottom: 20px;
             }
             .card {
-                                                padding: 15px;
+                padding: 15px;
                 border-radius: 6px;
                 background-color: white;
                 color: white;
                 margin: 15px;
             }
             .text {
-                                                padding: 15px;
+                padding: 15px;
                 border-radius: 6px;
                 background-color: yellow;
                 color: black;
                 margin: 15px;
             }
             .col {
-                                                flex: 1;
+                flex: 1;
                 text-align: center;
             }
         </style>
@@ -122,14 +120,11 @@ inquirer
     </nav>
     <div class="container">
         <div class="row">`;
-        fs.writeFile('./final.html', html, function(err) {
-            if (err) {
-                console.log(err);
-            }
-        });
-        console.log('top');
-    }
 
+        fs.writeFile('./final.html', html, (err) => err ?
+                console.log(err) : console.log('top'))
+            }
+            
     function addHTML(member) {
         return new Promise(function(res, rej) {
             const name = member.getName();
@@ -192,11 +187,12 @@ inquirer
             fs.appendFile('./final.html', data, function (err) {
                 if (err) {
                     return rej(err);
-                };
-                return res();
-            });
+                }
+               else { return res();
+            };
         });
-    }
+    });
+}
 
     function bottomHTML() {
         const html = `
@@ -212,4 +208,4 @@ inquirer
         });
         console.log('bottom');
     }
-    initApp();
+    init();
