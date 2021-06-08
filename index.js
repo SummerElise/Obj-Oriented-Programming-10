@@ -93,22 +93,22 @@ inquirer
                 display: flex;
                 flex-wrap: wrap;
                 justify-content: center;
-                margin-top: 20px;
-                margin-bottom: 20px;
+                margin-top: 19px;
+                margin-bottom: 19px;
             }
             .card {
-                padding: 15px;
-                border-radius: 6px;
+                padding: 14px;
+                border-radius: 5px;
                 background-color: white;
                 color: white;
-                margin: 15px;
+                margin: 14px;
             }
             .text {
-                padding: 15px;
-                border-radius: 6px;
+                padding: 14px;
+                border-radius: 5px;
                 background-color: yellow;
                 color: black;
-                margin: 15px;
+                margin: 14px;
             }
             .col {
                 flex: 1;
@@ -140,7 +140,7 @@ inquirer
             if (role === 'Manager') {
                 const officeNumber = member.getOfficeNumber();
                 data = 
-                `<div class="card bg-dark justify-content-center align-items-center" style="width: 18rem;">
+                `<div class="card bg-dark justify-content-center align-items-center" style="width: 17rem;">
                 <div class="col card-header">
                     <h4>${name}</h4>
                 </div>
@@ -157,7 +157,7 @@ inquirer
             
             } else if (role === 'Engineer') {
                 const gitHub = member.getGitHub();
-                data = `<div class="card bg-dark justify-content-center align-items-center" style="width: 18rem;">
+                data = `<div class="card bg-dark justify-content-center align-items-center" style="width: 17rem;">
                 <div class="col card-header">
                     <h4>${name}</h4>
                 </div>
@@ -174,7 +174,7 @@ inquirer
 
             } else {
                 const school = member.getSchool();
-                data = `<div class="card bg-dark justify-content-center align-items-center" style="width: 18rem;">
+                data = `<div class="card bg-dark justify-content-center align-items-center" style="width: 17rem;">
                 <div class="col card-header">
                     <h4>${name}</h4>
                 </div>
